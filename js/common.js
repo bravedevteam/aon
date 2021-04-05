@@ -29,7 +29,26 @@ $(function(){
 
 	var fullpage = new Swiper('#container', pageSet_1);
 
-	console.log("mobile : " + mobile + "\nwinW : " + winW + "\nwinH : " + winH);
+	var mainVisual = new Swiper("#mainVisual", {
+		slidesPerView: 1,
+		loop: true,
+		spaceBetween: 0,
+    effect: 'fade',
+		autoplay:{
+			delay: 3000
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'progressbar',
+		},
+	});
+
+	mainVisual.on("slideChange", function(){
+		var current = mainVisual.realIndex+1;
+		var total = $('#mainVisual .swiper-slide:not(.swiper-slide-duplicate)').length;
+
+		$("#mainVisual .pagingNum").html("<strong>"+current+"</strong>/"+total);
+	});
 
 	// 콘텐츠 체크
 	function contentCheck(){
@@ -44,18 +63,12 @@ $(function(){
 			}
 		});
 
-		console.log("section_fin : " + section);
-
 		if(winH <= section){
 			fullpage.destroy();
 			fullpage = new Swiper('#container', pageSet_2);
-
-			console.log("pageSet1");
 		}else{
 			fullpage.destroy();
 			fullpage = new Swiper('#container', pageSet_1);
-
-			console.log("pageSet2");
 		}
 	}
 	contentCheck();
@@ -63,8 +76,6 @@ $(function(){
 	$("#wrap").addClass("pos1");
 	fullpage.on("transitionEnd", function(){
 		var target = fullpage.realIndex+1;
-
-		console.log("111")
 
 		$("#wrap").removeAttr("class");
 		$("#wrap").addClass("pos"+target);
@@ -132,7 +143,6 @@ $(function(){
 	$(window).resize(function(){
 		winW = $(window).outerWidth();
 		winH = $(window).outerHeight();
-		console.log("winW : " + winW + "\nwinH : " + winH);
 
 		if(winW <= 750){
 			mobile = true;
