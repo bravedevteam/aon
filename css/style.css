@@ -302,6 +302,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { 
 #wrap.pos9 #btnTop,
 #wrap.pos10 #btnTop { opacity:1; bottom:8px; background-image:url('../images/pc/common/btnTop2.png'); }
 
+#btnTop.on { bottom:8px; }
+
 
 /* Contact us */
 .boxContact { height:380px; position:relative; background:#353535; }
@@ -372,6 +374,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { 
 	#wrap.pos8 #header h1,
 	#wrap.pos9 #header h1,
 	#wrap.pos10 #header h1 { background-image:url('../images/mo/common/logo_1.png'); }
+
+	#btnTop { margin-left:0; left:auto; right:20px; opacity:1; }
 }
 
 @media screen and (max-width: 1200px){
@@ -607,6 +611,4 @@ article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section { 
 	.boxContact .link a:after { width:8px; height:8px; }
 
 	#footer { padding:23px 0 30px; font-size:10px; }
-
-	#btnTop { display:none; }
 }
