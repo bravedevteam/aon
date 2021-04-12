@@ -21,7 +21,7 @@ $(function(){
 		slidesPerView: "auto",
 		direction: "vertical",
 		grabCursor: true,
-    mousewheel: false,
+    mousewheel: true,
 		spaceBetween: 0,
 		freeMode: true,
 		speed: 600
@@ -38,8 +38,8 @@ $(function(){
 			delay: 3000
 		},
 		pagination: {
-			el: '.swiper-pagination',
-			type: 'progressbar',
+			el: '#mainVisual .swiper-pagination',
+			type: '#mainVisual progressbar',
 		},
 	});
 
@@ -137,7 +137,17 @@ $(function(){
 		}
 	});
 
-	
+	window.addEventListener('mousewheel',handleMouseWheel);
+	function handleMouseWheel(e){
+  	const translate = Math.abs(fullpage.translate);
+		var section1 = $("#section1").height();
+
+		if(section1 <= translate){
+			$("#btnTop").addClass("on");
+		}else{
+			$("#btnTop").removeClass("on");
+		}
+	}
 
 	// 브라우저 사이즈 체크
 	$(window).resize(function(){
